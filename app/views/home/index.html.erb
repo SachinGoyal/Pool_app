@@ -1,23 +1,26 @@
 
+<%= javascript_include_tag "home.js" %>
 
 <h1>Listing Selectors</h1>
 
-<table class="table table-striped table-bordered table-condensed">  <thead>
-<%#= link_to "All Users", :action => "index" %>
-|
-<%#= link_to "Users awaiting approval", :action => "index", :approved => "false" %>
-<table>
-  <% @users.each do |user| %>
+
+<table class="table table-striped table-bordered table-condensed">
+  <thead>
     <tr>
-      <td>
-        <%= user.email %>
-      </td>
-      <td>
-        <%= user.approved %>
-      </td>
-      <td>
-        <%= link_to "Edit", edit_user_registration_path(user) %>
-      </td>
+      <th>Email</th>
+      <th>Status</th>
+      <th>Activate Selector</th>
     </tr>
-  <% end %>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.approved %></td>
+        <td><%= link_to "Activate", home_activate_selector_path(:id => user.id) ,class: 'btn btn-default activate_selector'%></td>       
+      </tr>
+    <% end %>
+  </tbody>
 </table>
+

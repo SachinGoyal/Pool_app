@@ -4,6 +4,14 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  
+  def activate_selector
+    user = self
+    if user.role == 'Selector'
+      user.update_attribute(:approved,true)
+    end
+  end
+
   def active_for_authentication? 
   	if self.role == 'Selector'
       super && approved? 
