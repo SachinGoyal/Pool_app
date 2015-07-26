@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
   
+  resources :vote_schedules
   get 'home/index'
   get 'home/activate_selector'
   get 'home/candidate'
   get 'home/final_candidate'
   get 'home/select_candidate'
 
-  resources :candidates
+  resources :candidates do
+    collection do
+      get 'final_candidate'
+    end
+  end
   devise_for :users
   root to: "home#index"
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date from:</strong>
+  <%= @vote_schedule.date_from %>
+</p>
+
+<p>
+  <strong>Date to:</strong>
+  <%= @vote_schedule.date_to %>
+</p>
+
+<p>
+  <strong>Winner:</strong>
+  <%= @vote_schedule.winner %>
+</p>
+
+<%= link_to 'Edit', edit_vote_schedule_path(@vote_schedule) %> |
+<%= link_to 'Back', vote_schedules_path %>

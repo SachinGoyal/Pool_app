@@ -17,10 +17,14 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.email %></td>
-        <td><%= user.approved %></td>
-        <td><%= link_to "Activate", home_activate_selector_path(:id => user.id) ,class: 'btn btn-default activate_selector'%></td>       
+        <td><%= user.approved? ? 'Active' : 'Waiting For Approval' %></td>
+        <td><%= link_to "Activate", home_activate_selector_path(:id => user.id) ,class: 'btn btn-default'%></td>       
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<% if current_user.role == 'Admin'%>
+  <%= link_to 'Final Candidates' ,final_candidate_candidates_path , :class => 'btn btn-default'%>
+<%end%>
 

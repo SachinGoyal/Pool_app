@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_from: 2015-07-26 16:37:15
+  date_to: 2015-07-26 16:37:15
+  winner: MyString
+
+two:
+  date_from: 2015-07-26 16:37:15
+  date_to: 2015-07-26 16:37:15
+  winner: MyString

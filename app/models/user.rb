@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  scope :voter, -> { where(role: 'Voter') }
+  scope :selector, -> { where(role: 'Selector')}
 
   has_one :vote
   has_one :candidate, through: :vote

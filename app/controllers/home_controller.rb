@@ -19,10 +19,6 @@ class HomeController < ApplicationController
   	@candidates = Candidate.all
   end
   
-  def final_candidate
-    @candidates = Candidate.final_candidate
-  end
-  
   def activate_selector
     @user = User.find(params[:id])
     @user.activate_selector

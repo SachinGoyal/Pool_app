@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hi <%= @voter.email %></h1>
+    <p>
+    Vote Schedule 
+    TimeFrom <%= @vote_schedule.date_from %>
+    TimeTo <%= @vote_schedule.date_to %>
+    </p>
+    Selected Candidates
+    <% @final_candidate.each do |candidate| %>
+	    Name  <%= candidate.name%>
+	    Age = <%= candidate.age%></br>
+    <% end %>
+  </body>
+</html>

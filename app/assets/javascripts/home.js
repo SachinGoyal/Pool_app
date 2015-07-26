@@ -1,5 +1,5 @@
 $(".activate_selector").click(function(){
-	alert('Hello');
+	//alert('Hello');
     
 	/*$.ajax({
 	method: "POST",

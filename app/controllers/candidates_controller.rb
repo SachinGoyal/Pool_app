@@ -3,6 +3,11 @@ class CandidatesController < ApplicationController
 
   # GET /candidates
   # GET /candidates.json
+  def final_candidate
+    Vote.final_candidate
+    @candidates = Candidate.all.where(:selection_status => true)
+  end
+
   def index
     @candidates = Candidate.all
   end
