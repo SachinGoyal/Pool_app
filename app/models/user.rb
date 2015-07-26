@@ -4,7 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  
+  has_one :vote
+  has_one :candidate, through: :vote
+
   def activate_selector
     user = self
     if user.role == 'Selector'

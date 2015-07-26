@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   
   get 'home/index'
   get 'home/activate_selector'
+  get 'home/candidate'
+  get 'home/final_candidate'
+  get 'home/select_candidate'
 
   resources :candidates
   devise_for :users
