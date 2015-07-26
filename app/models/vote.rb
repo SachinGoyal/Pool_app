@@ -16,15 +16,16 @@ class Vote < ActiveRecord::Base
   end 
 
   def self.final_candidate
-  	Candidate.update_all(selection_status: false)
+    Candidate.update_all(selection_status: false)
     vote_result = Candidate.all.map{|c| [c.id ,c.votes.where(:voter_type => 'Selector').count]}
     result = vote_result.sort_by(&:last).reverse.first(2)
     result.map{|r| Candidate.find(r.first).update_attribute(:selection_status,true)}
   end
 
    def self.winner
+  	Candidate.update_all(winner: false)
     vote_result = Candidate.all.map{|c| [c.id ,c.votes.where(:voter_type => 'Voter').count]}
     result = vote_result.sort_by(&:last).reverse.first
-    User.find(result.first)
+    Candidate.find(result.first).update_attribute(:winner,true)
   end
 end

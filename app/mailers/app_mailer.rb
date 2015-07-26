@@ -12,4 +12,10 @@ class AppMailer < ApplicationMailer
     @vote_schedule = vote_schedule
     mail(to: @voter.email, subject: 'Voting Schedule')
   end
+
+  def winner(user,candidate)
+    @user = user
+    @candidate = candidate
+    mail(to: @user.email, subject: 'Voting Result')
+  end
 end

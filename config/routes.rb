@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'home/candidate'
   get 'home/final_candidate'
   get 'home/select_candidate'
+  get 'home/winner'
 
   resources :candidates do
     collection do

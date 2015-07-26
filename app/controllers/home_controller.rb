@@ -20,6 +20,7 @@ class HomeController < ApplicationController
 
   def winner
     Vote.winner
+    @candidate = Candidate.find_by_winner(true)
 
   end
 
