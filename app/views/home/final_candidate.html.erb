@@ -1,0 +1,31 @@
+<% if DateTime.now.between?(VoteSchedule.last.date_from , VoteSchedule.last.date_to) %>
+  <% if current_user.candidate.present? %>
+  <p> Selected Candidate</p>
+    Name <%= current_user.candidate.name %></br>
+    Age <%= current_user.candidate.age %>
+  <% else%>
+  <h1>Choose Candidates</h1>
+
+  <table class="table table-striped table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Vote</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @candidates.each do |candidate| %>
+        <tr>
+          <td><%= candidate.name %></td>
+          <td><%= candidate.age %></td>
+         <td><%= link_to 'Select', home_select_candidate_path(:id => candidate.id)%></td>   
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
+<% else %>
+  <p>Voting Window open between <%= VoteSchedule.last.date_from %> to <%= VoteSchedule.last.date_to%>
+<% end %>

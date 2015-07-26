@@ -2,12 +2,11 @@
 
 <h1>Listing Vote Schedules</h1>
 
-<table>
+<table class="table table-striped table-bordered table-condensed">
   <thead>
     <tr>
       <th>Date from</th>
       <th>Date to</th>
-      <th>Winner</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,7 +16,6 @@
       <tr>
         <td><%= vote_schedule.date_from %></td>
         <td><%= vote_schedule.date_to %></td>
-        <td><%= vote_schedule.winner %></td>
         <td><%= link_to 'Show', vote_schedule %></td>
         <td><%= link_to 'Edit', edit_vote_schedule_path(vote_schedule) %></td>
         <td><%= link_to 'Destroy', vote_schedule, method: :delete, data: { confirm: 'Are you sure?' } %></td>

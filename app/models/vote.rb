@@ -17,8 +17,14 @@ class Vote < ActiveRecord::Base
 
   def self.final_candidate
   	Candidate.update_all(selection_status: false)
-    vote_result = Candidate.all.map{|c| [c.id ,c.votes.count]}
+    vote_result = Candidate.all.map{|c| [c.id ,c.votes.where(:voter_type => 'Selector').count]}
     result = vote_result.sort_by(&:last).reverse.first(2)
     result.map{|r| Candidate.find(r.first).update_attribute(:selection_status,true)}
+  end
+
+   def self.winner
+    vote_result = Candidate.all.map{|c| [c.id ,c.votes.where(:voter_type => 'Voter').count]}
+    result = vote_result.sort_by(&:last).reverse.first
+    User.find(result.first)
   end
 end
